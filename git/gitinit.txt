@@ -1,0 +1,159 @@
+#git config --global user.name "Vincent Pannier"
+#git config --global user.email "vi.pannier@gmail.com"
+
+# Signer les tags : https://git-scm.com/book/tr/v2/Git-Tools-Signing-Your-Work
+# git config --global user.SigningKey F...
+
+# Méthode de push (ne pousser que la branche courante et vérifier que la branche est tracké)
+git config --global push.default upstream
+git config --global pull.rebase preserve
+
+# Le problème des fins de lignes. 
+# unix    = LF
+# Windows = CR+LF
+# core.autocrlf = false -> Aucune modification ne sera faite par GIT.
+# core.autocrlf = true  -> GIT remplace CRLF en LF lors de l’écriture du fichier dans la base. 
+#							Et il fait l’opération inverse lorsqu’il écrit dans la zone de travail
+# core.autocrlf = input -> GIT remplace CRLF en LF lors de l’écriture du fichier dans la base. 
+#							Mais il ne fait pas l’opération inverse lorsqu’il écrit dans la zone de travail.
+# core.safecrlf = true  -> Vérifie que la conversion de CRLF en LF et vice versa est possible. 
+#							GIT test que si le fichier est déposé en convertissant en LF, 
+#							est-ce qu’il sera identique à l’originale lorsqu’il sera revenu dans la zone de travail. 
+#							Dans le cas contraire, le fichier est rejeté avec une erreur de type 
+#							«fatal: CRLF would be replaced by LF in premier.html.» Dans ce cas, 
+#							il faut modifier les sauts de lignes qui sont CRLF (Windows) en LF (Unix) 
+#							pour que Git prenne en charge le fichier.
+# https://git-scm.com/book/fr/v1/Personnalisation-de-Git-Configuration-de-Git#Formatage-et-espaces-blancs
+git config --global core.safecrlf true
+# Unix/Mac
+#git config --global core.autocrlf input
+#rem Windows
+git config --global core.autocrlf false
+git config --global core.editor vi
+git config --global core.quotepath off
+git config --global core.whitespace blank-at-eol,blank-at-eof,space-before-tab,trailing-space,space-before-tab,indent-with-non-tab
+git config --global core.packedGitLimit 512m
+git config --global core.packedGitWindowSize 512m
+git config --global core.compression 0
+git config --global core.preloadindex true
+git config --global core.fscache true
+
+git config --global pack.deltaCacheSize 2047m
+git config --global pack.packSizeLimit 2047m
+git config --global pack.windowMemory 2047m
+
+git config --global help.format html
+
+git config --global status.showUntrackedFiles all
+git config --global status.submoduleSummary false
+
+# https://git-scm.com/book/fr/v1/Les-bases-de-Git-Trucs-et-astuces
+git config --global alias.hlp 'help -w'
+git config --global alias.alias 'config --get-regexp ^alias\.'
+
+git config --global alias.type 'cat-file -t'
+git config --global alias.content 'cat-file -p'
+
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.st 'status -u'
+git config --global alias.br 'branch -vv'
+
+git config --global alias.staged 'diff --staged'
+git config --global alias.cached 'diff --staged'
+git config --global alias.changes 'diff --name-status'
+git config --global alias.diffstat 'diff --stat'
+
+git config --global alias.save 'push --set-upstream origin'
+git config --global alias.create 'checkout -b'
+git config --global alias.remove 'branch -d'
+git config --global alias.import 'merge --no-ff'
+git config --global alias.amend 'commit --amend'
+git config --global alias.undo 'reset --soft HEAD^'
+git config --global alias.conflicts '!git ls-files -u | cut -f 2 | sort -u'
+
+git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+git config --global alias.oneline 'log --pretty=oneline --abbrev-commit --graph --decorate'
+git config --global alias.ls 'log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate'
+git config --global alias.last 'log -1 HEAD'
+git config --global alias.k '!gitk --all &'
+git config --global alias.flowlog 'log --graph --oneline  --first-parent'
+	
+git config --global alias.lc '!git oneline ORIG_HEAD.. --stat --no-merges'
+git config --global alias.versioning 'commit -a -m'
+
+git config --global alias.unstash 'stash apply'
+git config --global alias.cleanstash 'stash drop'
+git config --global alias.instash 'stash save -u' 
+git config --global alias.outstash 'stash pop --index'
+
+git config --global alias.rdiff 'diff -p HEAD..FETCH_HEAD -w'
+git config --global alias.dif 'diff --ignore-all-space --color-words=.'
+git config --global alias.diffstat 'diff --stat'
+	
+git config --global alias.untrack 'rm --cached'
+git config --global alias.unmerge 'merge --abort'
+git config --global alias.unupdate 'checkout --'
+git config --global alias.unadd 'reset HEAD --'
+git config --global alias.deleted 'rev-list -n 1 HEAD --'
+
+git config --global alias.lg 'log --pretty=format:"%C(auto)%h -%d %Creset%s%C(green)\\ [%cn - %C(magenta)%cd %C(cyan)(%cr)%C(green)]" --abbrev-commit --all --graph --decorate --date=default'
+git config --global alias.lc '!git oneline ORIG_HEAD.. --stat --no-merges'
+git config --global alias.lg1 'log -1 --stat HEAD'
+git config --global alias.lg9 'log --pretty=format:"%C(auto)%h -%d %Creset%s%C(green)\\ [%cn - %C(magenta)%cd %C(cyan)(%cr)%C(green)]" --abbrev-commit --all --graph -9'
+git config --global alias.lg2 'log --pretty=format:"%C(auto)%h -%d %Creset%s%C(green)\\ [%cn - %C(magenta)%cd %C(cyan)(%cr)%C(green)]" --abbrev-commit --all --graph -2 -p'
+
+git config --global alias.demon '!git daemon --reuseaddr --base-path=. --export-all --enable=receive-pack &'
+
+# https://git-scm.com/book/fr/v1/Personnalisation-de-Git-Configuration-de-Git#Couleurs-dans-Git
+git config --global color.suivretatus auto
+git config --global color.ui true
+
+git config --global color.status.added yellow
+git config --global color.status.changed green
+git config --global color.status.untracked cyan
+
+git config --global color.branch auto
+git config --global color.branch.upstream cyan
+git config --global color.branch.current 'yellow reverse'
+git config --global color.branch.local yellow
+git config --global color.branch.remote green
+git config --global color.branch.upstream cyan
+
+git config --global color.diff.meta 'yellow bold'
+git config --global color.diff.frag 'magenta bold'
+git config --global color.diff.old 'red bold'
+git config --global color.diff.new 'green bold'
+
+# SSL Config
+# Create a certificate with
+# openssl pkcs12 -in mycert.p12 -nocerts -out mycert.key -nodes
+# openssl pkcs12 -in mycert.p12 -clcerts -nokeys -out mycert.crt
+# openssl pkcs12 -in mycert.p12 -cacerts -nokeys -out cacert.crt
+# Then :
+# git config --local http.sslCert "/mycert.crt"
+# git config --local http.sslKey "/mycert.key"
+# git config --local http.sslCaInfo "/cacert.crt"
+# git config --local http.sslVerify "false"
+git config --global http.postBuffer 1048576000
+
+git config --global gc.auto 256
+
+# https://git-scm.com/book/fr/v1/Personnalisation-de-Git-Configuration-de-Git#Outils-externes-de-fusion-et-de-diff%C3%A9rence
+git config --global diff.tool diffmerge
+git config --global diff.renames true
+git config --global diff.mnemonicPrefix true
+
+git config --global difftool.prompt false
+git config --global difftool.trustExitCode false
+
+git config --global difftool.diffmerge.cmd 'd:/DiffMerge/sgdm.exe $LOCAL $BASE --title1="Theirs" --title2="Mine"'
+git config --global difftool.diffmerge.keepBackup false
+
+git config --global merge.tool diffmerge
+
+git config --global mergetool.diffmerge.keepBackup false
+git config --global mergetool.diffmerge.trustExitCode false
+git config --global mergetool.diffmerge.cmd 'd:/DiffMerge/sgdm.exe $LOCAL $BASE $REMOTE --result=$MERGED --title1="Theirs" --title2="Merging to: $MERGED" --title3="Mine"'
+
+
