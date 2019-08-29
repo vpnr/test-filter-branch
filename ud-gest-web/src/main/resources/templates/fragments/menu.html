@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<nav th:fragment="menu">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">
+					<img th:src="@{/images/accueil_logo_02.png}" name="image" id="home" th:onmouseover="@{/images/accueil_logo_01.png}" th:onmouseout="@{/images/accueil_logo_02.png}" />
+<!-- 					<img th:src="@{/images/accueil_logo_02.png}" name="image" id="home"/> -->
+				</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="salon.html">Le salon</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle white"
+						data-toggle="dropdown">Soins et tarifs<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="soins-visage.html">Soins visages</a></li>
+							<li><a href="massages.html">Massages</a></li>
+							<li><a href="escales.html">Escales</a></li>
+							<li><a href="minceur-fermete.html">Minceur / fermeté</a></li>
+							<li><a href="epilations.html">Epilations</a></li>
+							<li><a href="mains-pieds.html">Mains et pieds</a></li>
+							<li><a href="extensions-cils.html">Extensions de cils</a></li>
+							<li><a href="autres-soins.html">Autres soins</a></li>
+						</ul></li>
+					<li><a href="cheques-cadeaux.html">Chèques cadeaux</a></li>
+					<li><a href="partenaires.html">Nos partenaires</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+</html>
