@@ -15,9 +15,15 @@
 hs_err_pid*
 
 # Web content
+<<<<<<< HEAD
 *.png
 *.jpg
 *.jpeg
+=======
+#*.png
+#*.jpg
+#*.jpeg
+>>>>>>> vitoha/master
 
 *.project
 *.metadata

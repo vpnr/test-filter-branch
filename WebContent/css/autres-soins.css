@@ -1,0 +1,73 @@
+#copyright{
+	text-align: center;
+}
+
+#home{
+	margin: -10px 0px 0px 0px;
+	height: 40px;
+	width: 40px;
+}
+
+.justify{
+	text-align: justify;
+}
+
+.underline{
+	text-decoration: underline;
+}
+
+#footer {
+	width: 100%;
+    border-width: 0 0 1px;
+    background-color: #222;
+    border-color: #080808;
+	min-height: 100px;
+    border: 1px solid transparent;
+    margin-bottom: 0px !important;
+    margin-right: 0px !important;
+}
+
+#footer-content {
+	margin: auto;	
+}
+
+#footer p {
+	margin: 0px;
+	font-size: 10px;
+}
+
+.footer-titre {
+	margin-top: 7px !important; 
+}
+
+/*------------Bootstrap responsive------------------------*/
+
+.text-xs-left { text-align: left; }
+.text-xs-right { text-align: right; }
+.text-xs-center { text-align: center; }
+.text-xs-justify { text-align: justify; }
+img { width: 100%; }
+
+@media (min-width: 767px) {
+  .text-sm-left { text-align: left; }
+  .text-sm-right { text-align: right; }
+  .text-sm-center { text-align: center; }
+  .text-sm-justify { text-align: justify; }
+  img { width: 50%; float: right;  }
+}
+
+@media (min-width: 992px) {
+  .text-md-left { text-align: left; }
+  .text-md-right { text-align: right; }
+  .text-md-center { text-align: center; }
+  .text-md-justify { text-align: justify; }
+  img { width: 50%; float: right;  }	
+}
+
+@media (min-width: 1200px) {
+  .text-lg-left { text-align: left; }
+  .text-lg-right { text-align: right; }
+  .text-lg-center { text-align: center; }
+  .text-lg-justify { text-align: justify; }
+  img { width: 50%; float: right;  }
+}
